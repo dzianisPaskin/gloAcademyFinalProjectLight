@@ -4,7 +4,10 @@ export const openModal = () => {
   const modal = document.querySelector(".modal-callback");
 
   header.addEventListener("click", (e) => {
-    if (e.target.closest(".callback-btn")) overlay.style.display = "block";
-    modal.style.display = "block";
+    if (e.target.closest(".callback-btn")) {
+
+      overlay.style.display = "block";
+      modal.style.display = "block";
+    }
   });
 };
