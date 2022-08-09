@@ -1,34 +1,35 @@
 export const mainSlider = () => {
- 
   const slides = document.querySelectorAll(".item");
-  const dots = document.querySelectorAll('.dot')
-  const tableText = document.querySelectorAll('.table')
-  
-  
+  const tableText = document.querySelectorAll(".table");
   let currentSlide = 0;
+  tableText[currentSlide].classList.add("active")
+  setTimeout(() => tableText[currentSlide].classList.remove("active"), 2700);
 
+  const showText = () => {
+    slides[currentSlide].classList.add("item-active");
 
-  
+    setTimeout(() => tableText[currentSlide].classList.add("active"), 300);
+  };
+  const hideText = () => {
+    slides[currentSlide].classList.remove("item-active");
+
+    setTimeout(() => tableText[currentSlide].classList.remove("active"), 2700);
+  };
+
   const autoSlide = () => {
-    slides[currentSlide].classList.remove('item-active')
-    dots[currentSlide].classList.remove('dot-active')
-    tableText[currentSlide].style.visibility = 'hidden'
-    tableText[currentSlide].style.opacity = 0
-    currentSlide++
+    hideText();
 
-    if(currentSlide >= slides.length) {
-      currentSlide = 0
+    currentSlide++;
+
+    if (currentSlide >= slides.length) {
+      currentSlide = 0;
     }
-    slides[currentSlide].classList.add('item-active')
-    dots[currentSlide].classList.add('dot-active')
-    tableText[currentSlide].style.visibility = 'visible'
-    tableText[currentSlide].style.opacity = 1
+    showText();
   };
 
   const startSlide = () => {
-    setInterval(autoSlide, 3000)
-  }
+    setInterval(autoSlide, 3000);
+  };
 
-  startSlide()
-
+  startSlide();
 };
