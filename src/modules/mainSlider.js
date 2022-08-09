@@ -29,8 +29,6 @@ export const mainSlider = () => {
     setInterval(autoSlide, 3000)
   }
 
-  const stopSlide = () => {};
-
   startSlide()
 
 };
