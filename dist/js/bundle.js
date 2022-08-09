@@ -16,7 +16,17 @@
   \******************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_smoothScroll__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/smoothScroll */ \"./modules/smoothScroll.js\");\n/* harmony import */ var _modules_openModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/openModal */ \"./modules/openModal.js\");\n\r\n\r\n\r\n(0,_modules_smoothScroll__WEBPACK_IMPORTED_MODULE_0__.smoothScroll)()\r\n;(0,_modules_openModal__WEBPACK_IMPORTED_MODULE_1__.openModal)()\n\n//# sourceURL=webpack:///./index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_smoothScroll__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/smoothScroll */ \"./modules/smoothScroll.js\");\n/* harmony import */ var _modules_openModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/openModal */ \"./modules/openModal.js\");\n/* harmony import */ var _modules_closeModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/closeModal */ \"./modules/closeModal.js\");\n\r\n\r\n\r\n\r\n(0,_modules_smoothScroll__WEBPACK_IMPORTED_MODULE_0__.smoothScroll)()\r\n;(0,_modules_openModal__WEBPACK_IMPORTED_MODULE_1__.openModal)()\r\n;(0,_modules_closeModal__WEBPACK_IMPORTED_MODULE_2__.closeModal)()\n\n//# sourceURL=webpack:///./index.js?");
+
+/***/ }),
+
+/***/ "./modules/closeModal.js":
+/*!*******************************!*\
+  !*** ./modules/closeModal.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"closeModal\": () => (/* binding */ closeModal)\n/* harmony export */ });\nconst closeModal = () => {\r\n  const overlay = document.querySelector(\".modal-overlay\");\r\n  const modal = document.querySelector(\".modal-callback\");\r\n\r\n  overlay.addEventListener(\"click\", (e) => {\r\n    if (e.target.closest(\".modal-overlay\")) {\r\n      modal.style.display = \"none\";\r\n      overlay.style.display = \"none\";\r\n    }\r\n  });\r\n  modal.addEventListener(\"click\", (e) => {\r\n    if (e.target.closest(\".modal-close\")) {\r\n      overlay.style.display = \"none\";\r\n      modal.style.display = \"none\";\r\n    }\r\n  });\r\n};\r\n\n\n//# sourceURL=webpack:///./modules/closeModal.js?");
 
 /***/ }),
 
