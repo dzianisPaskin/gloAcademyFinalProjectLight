@@ -1,5 +1,5 @@
-export const mainSlider = (classSlider, classSlides, classDots) => {
-  const sliderBlock = document.querySelector(".top-slider");
+export const mainSlider = () => {
+ 
   const slides = document.querySelectorAll(".item");
   const dots = document.querySelectorAll('.dot')
   const tableText = document.querySelectorAll('.table')

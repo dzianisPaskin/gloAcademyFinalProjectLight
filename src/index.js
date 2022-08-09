@@ -7,4 +7,4 @@ import {mainSlider} from './modules/mainSlider'
 smoothScroll()
 openModal()
 closeModal()
-mainSlider(".top-slider",".item",".dot")
+mainSlider()
