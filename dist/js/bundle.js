@@ -16,7 +16,7 @@
   \******************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_smoothScroll__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/smoothScroll */ \"./modules/smoothScroll.js\");\n/* harmony import */ var _modules_openModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/openModal */ \"./modules/openModal.js\");\n/* harmony import */ var _modules_closeModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/closeModal */ \"./modules/closeModal.js\");\n\r\n\r\n\r\n\r\n(0,_modules_smoothScroll__WEBPACK_IMPORTED_MODULE_0__.smoothScroll)()\r\n;(0,_modules_openModal__WEBPACK_IMPORTED_MODULE_1__.openModal)()\r\n;(0,_modules_closeModal__WEBPACK_IMPORTED_MODULE_2__.closeModal)()\n\n//# sourceURL=webpack:///./index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_smoothScroll__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/smoothScroll */ \"./modules/smoothScroll.js\");\n/* harmony import */ var _modules_openModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/openModal */ \"./modules/openModal.js\");\n/* harmony import */ var _modules_closeModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/closeModal */ \"./modules/closeModal.js\");\n/* harmony import */ var _modules_mainSlider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/mainSlider */ \"./modules/mainSlider.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n(0,_modules_smoothScroll__WEBPACK_IMPORTED_MODULE_0__.smoothScroll)()\r\n;(0,_modules_openModal__WEBPACK_IMPORTED_MODULE_1__.openModal)()\r\n;(0,_modules_closeModal__WEBPACK_IMPORTED_MODULE_2__.closeModal)()\r\n;(0,_modules_mainSlider__WEBPACK_IMPORTED_MODULE_3__.mainSlider)(\".top-slider\",\".item\",\".dot\")\r\n\n\n//# sourceURL=webpack:///./index.js?");
 
 /***/ }),
 
@@ -27,6 +27,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mod
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"closeModal\": () => (/* binding */ closeModal)\n/* harmony export */ });\nconst closeModal = () => {\r\n  const overlay = document.querySelector(\".modal-overlay\");\r\n  const modal = document.querySelector(\".modal-callback\");\r\n\r\n  overlay.addEventListener(\"click\", (e) => {\r\n    if (e.target.closest(\".modal-overlay\")) {\r\n      modal.style.display = \"none\";\r\n      overlay.style.display = \"none\";\r\n    }\r\n  });\r\n  modal.addEventListener(\"click\", (e) => {\r\n    if (e.target.closest(\".modal-close\")) {\r\n      overlay.style.display = \"none\";\r\n      modal.style.display = \"none\";\r\n    }\r\n  });\r\n};\r\n\n\n//# sourceURL=webpack:///./modules/closeModal.js?");
+
+/***/ }),
+
+/***/ "./modules/mainSlider.js":
+/*!*******************************!*\
+  !*** ./modules/mainSlider.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"mainSlider\": () => (/* binding */ mainSlider)\n/* harmony export */ });\nconst mainSlider = (classSlider, classSlides, classDots) => {\r\n  const sliderBlock = document.querySelector(\".top-slider\");\r\n  const slides = document.querySelectorAll(\".item\");\r\n  const dots = document.querySelectorAll('.dot')\r\n  const tableText = document.querySelectorAll('.table')\r\n  \r\n  \r\n  let currentSlide = 0;\r\n\r\n\r\n  \r\n  const autoSlide = () => {\r\n    slides[currentSlide].classList.remove('item-active')\r\n    dots[currentSlide].classList.remove('dot-active')\r\n    tableText[currentSlide].style.visibility = 'hidden'\r\n    tableText[currentSlide].style.opacity = 0\r\n    currentSlide++\r\n\r\n    if(currentSlide >= slides.length) {\r\n      currentSlide = 0\r\n    }\r\n    slides[currentSlide].classList.add('item-active')\r\n    dots[currentSlide].classList.add('dot-active')\r\n    tableText[currentSlide].style.visibility = 'visible'\r\n    tableText[currentSlide].style.opacity = 1\r\n  };\r\n\r\n  const startSlide = () => {\r\n    setInterval(autoSlide, 3000)\r\n  }\r\n\r\n  const stopSlide = () => {};\r\n\r\n  startSlide()\r\n\r\n};\r\n\n\n//# sourceURL=webpack:///./modules/mainSlider.js?");
 
 /***/ }),
 
