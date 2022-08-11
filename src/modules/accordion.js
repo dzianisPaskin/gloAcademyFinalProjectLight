@@ -5,17 +5,15 @@ export const accordion = () => {
 
   accordion.addEventListener("click", (e) => {
     const target = e.target.closest(".element");
-
-    if (!target.classList.contains("active")) {
+    if (target) {
       elem.forEach((el, ind) => {
-        if (el === target) {
+        if (target.classList.contains("active")) {
+          el.classList.remove("active");
+          elemContent[ind].style.display = "none";
+        } else if (el === target) {
           elemContent[ind].style.display = "block";
           el.classList.add("active");
-        }
-      });
-    } else {
-      elem.forEach((el, ind) => {
-        if (el === target) {
+        } else {
           el.classList.remove("active");
           elemContent[ind].style.display = "none";
         }
