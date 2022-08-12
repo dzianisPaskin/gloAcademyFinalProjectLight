@@ -12,7 +12,22 @@ const swiper = new Swiper('.swiper', {
   freeMode: true,
   slidesPerGroup: 3,
   loop: true,
+  breakpoints: {
 
+    0: {
+      slidesPerView: 1,
+      spaceBetween: 30
+    },
+    // when window width is >= 640px
+    576: {
+      slidesPerView: 2,
+      spaceBetween: 40
+    },
+    1124: {
+      slidesPerView: 3,
+      spaceBetween: 30
+    }
+  },
   navigation: {
     prevEl: ".arrow-left",
     nextEl: ".arrow-right",
