@@ -12,7 +12,8 @@ export const sendForm = ({ formId }) => {
   const errorText = "Ошибка...";
   const succesText = "Отправлено...";
 
-  inputName.addEventListener("change", (e) => {
+
+  const checkInputName = () => {
     const reg = /[^а-я]/gi;
     if (reg.test(inputName.value) || inputName.value.length <= 2) {
       inputName.classList.add("error");
@@ -24,9 +25,9 @@ export const sendForm = ({ formId }) => {
       inputName.classList.remove("error");
       statusBlockName.remove();
     }
-  });
+  }
 
-  inputTel.addEventListener("change", (e) => {
+  const checkInputTel = () => {
     if (inputTel.value.length === 18) {
       inputTel.classList.remove("error");
 
@@ -36,7 +37,33 @@ export const sendForm = ({ formId }) => {
       formGroup_2.append(statusBlockTel);
       inputTel.classList.add("error");
     }
-  });
+  }
+
+  // inputName.addEventListener("change", (e) => {
+    // const reg = /[^а-я]/gi;
+    // if (reg.test(inputName.value) || inputName.value.length <= 2) {
+    //   inputName.classList.add("error");
+    //   statusBlockName.textContent = `Только кириллица и не меньше 2х символов`;
+
+    //   formGroup_1.append(statusBlockName);
+    //   inputName.value = inputName.value.replace(reg, "");
+    // } else {
+    //   inputName.classList.remove("error");
+    //   statusBlockName.remove();
+    // }
+  // });
+
+  // inputTel.addEventListener("change", (e) => {
+  //   if (inputTel.value.length === 18) {
+  //     inputTel.classList.remove("error");
+
+  //     statusBlockTel.remove();
+  //   } else {
+  //     statusBlockTel.textContent = `Введите корректный номер`;
+  //     formGroup_2.append(statusBlockTel);
+  //     inputTel.classList.add("error");
+  //   }
+  // });
 
   const sendData = (data) => {
     return fetch("https://jsonplaceholder.typicode.com/posts", {
@@ -91,7 +118,8 @@ export const sendForm = ({ formId }) => {
     }
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-
+      checkInputName()
+      checkInputTel()
       submitForm();
     });
   } catch (error) {
