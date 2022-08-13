@@ -2,9 +2,9 @@ import { smoothScroll } from "./modules/smoothScroll";
 import { openModal } from "./modules/openModal";
 import { closeModal } from "./modules/closeModal";
 import { mainSlider } from "./modules/mainSlider";
+import { maskPhone } from "./modules/maskPhone";
 import { sendForm } from "./modules/sendForm";
 import { accordion } from "./modules/accordion";
-import { maskPhone } from "./modules/maskPhone";
 
 const swiper = new Swiper(".swiper", {
   slidesPerView: 3,
@@ -36,7 +36,7 @@ smoothScroll();
 openModal();
 closeModal();
 mainSlider();
+maskPhone({ formId: "form" }, '+7 (____) __ __ __');
 sendForm({ formId: "form" });
 accordion();
 
-maskPhone({ formId: "form" }, '+7 (___) ___ __ __');

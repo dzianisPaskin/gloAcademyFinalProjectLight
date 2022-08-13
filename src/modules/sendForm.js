@@ -1,43 +1,40 @@
 export const sendForm = ({ formId }) => {
   const form = document.getElementById(formId);
   const statusBlock = document.createElement("div");
+  const statusBlockName = document.createElement("div");
+  const statusBlockTel = document.createElement("div");
   const inputName = form.querySelector(".name");
   const inputTel = form.querySelector(".tel");
- 
-
+  const formGroup_1 = document.querySelector(".form-group_1");
+  const formGroup_2 = document.querySelector(".form-group_2");
 
   const loadText = "Идёт отправка..";
   const errorText = "Ошибка...";
   const succesText = "Отправлено...";
 
-  inputName.addEventListener("input", (e) => {
+  inputName.addEventListener("change", (e) => {
     const reg = /[^а-я]/gi;
-    e.target.value = e.target.value.replace(reg, "");
-    e.target.classList.add("error");
-    if (!reg.test(e.target.value) && e.target.value.length > 2) {
-      e.target.classList.remove("error");
-    } else if (reg.test(e.target.value)) {
-      e.target.value = e.target.value.replace(reg, "");
+    if (reg.test(inputName.value) || inputName.value.length <= 2) {
+      inputName.classList.add("error");
+      statusBlockName.textContent = `Только кириллица и не меньше 2х символов`;
+
+      formGroup_1.append(statusBlockName);
+      inputName.value = inputName.value.replace(reg, "");
+    } else {
+      inputName.classList.remove("error");
+      statusBlockName.remove();
     }
   });
-  inputTel.addEventListener("input", (e) => {
-    // const reg = /[^+0-9]/g;
-    // e.target.value = e.target.value.replace(reg, "");
-    // e.target.classList.add("error");
-    // if (
-    //   !reg.test(e.target.value) &&
-    //   e.target.value.length > 6 &&
-    //   e.target.value.length < 11
-    // ) {
-    //   e.target.classList.remove("error");
-    // } else if (reg.test(e.target.value)) {
-    //   e.target.value = e.target.value.replace(reg, "");
-    // }
 
-    if(e.target.value.length === 18) {
-      e.target.classList.remove('error')
+  inputTel.addEventListener("change", (e) => {
+    if (inputTel.value.length === 18) {
+      inputTel.classList.remove("error");
+
+      statusBlockTel.remove();
     } else {
-      e.target.classList.add('error')
+      statusBlockTel.textContent = `Введите корректный номер`;
+      formGroup_2.append(statusBlockTel);
+      inputTel.classList.add("error");
     }
   });
 
@@ -61,6 +58,7 @@ export const sendForm = ({ formId }) => {
     formData.forEach((val, key) => {
       formBody[key] = val;
     });
+
     if (
       !inputName.classList.contains("error") &&
       !inputTel.classList.contains("error")
@@ -76,8 +74,6 @@ export const sendForm = ({ formId }) => {
         });
     } else {
       statusBlock.textContent = "Данные введены неверно";
-      inputName.value = "";
-      inputTel.value = "";
     }
   };
 
@@ -87,6 +83,7 @@ export const sendForm = ({ formId }) => {
     }
     form.addEventListener("submit", (e) => {
       e.preventDefault();
+
       submitForm();
     });
   } catch (error) {

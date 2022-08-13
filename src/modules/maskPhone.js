@@ -9,8 +9,6 @@ export const maskPhone = ({ formId },masked) => {
     const template = masked,
       def = template.replace(/\D/g, ""),
       val = this.value.replace(/\D/g, "");
-    console.log(template);
-    console.log(event.target.value.length);
     let i = 0,
       newValue = template.replace(/[_\d]/g, function (a) {
         return i < val.length ? val.charAt(i++) || def.charAt(i) : a;
