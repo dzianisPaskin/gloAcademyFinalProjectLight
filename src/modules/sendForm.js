@@ -59,7 +59,15 @@ export const sendForm = ({ formId }) => {
       formBody[key] = val;
     });
 
-    if (
+    if (inputName.value === "" || inputTel.value === "") {
+      [inputName, inputTel].forEach((el) => {
+        if (el.value === "") {
+          el.classList.add("error");
+          statusBlock.textContent = "Заполните все поля";
+          form.append(statusBlock);
+        }
+      });
+    } else if (
       !inputName.classList.contains("error") &&
       !inputTel.classList.contains("error")
     ) {
