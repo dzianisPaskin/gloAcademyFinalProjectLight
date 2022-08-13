@@ -39,4 +39,4 @@ mainSlider();
 sendForm({ formId: "form" });
 accordion();
 
-maskPhone({ formId: "form" }, '+7 (__) --');
+maskPhone({ formId: "form" }, '+7 (___) ___ __ __');

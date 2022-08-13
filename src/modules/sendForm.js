@@ -21,17 +21,23 @@ export const sendForm = ({ formId }) => {
     }
   });
   inputTel.addEventListener("input", (e) => {
-    const reg = /[^+0-9]/g;
-    e.target.value = e.target.value.replace(reg, "");
-    e.target.classList.add("error");
-    if (
-      !reg.test(e.target.value) &&
-      e.target.value.length > 6 &&
-      e.target.value.length < 11
-    ) {
-      e.target.classList.remove("error");
-    } else if (reg.test(e.target.value)) {
-      e.target.value = e.target.value.replace(reg, "");
+    // const reg = /[^+0-9]/g;
+    // e.target.value = e.target.value.replace(reg, "");
+    // e.target.classList.add("error");
+    // if (
+    //   !reg.test(e.target.value) &&
+    //   e.target.value.length > 6 &&
+    //   e.target.value.length < 11
+    // ) {
+    //   e.target.classList.remove("error");
+    // } else if (reg.test(e.target.value)) {
+    //   e.target.value = e.target.value.replace(reg, "");
+    // }
+
+    if(e.target.value.length === 18) {
+      e.target.classList.remove('error')
+    } else {
+      e.target.classList.add('error')
     }
   });
 
