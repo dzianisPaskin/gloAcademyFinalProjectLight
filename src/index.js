@@ -4,28 +4,27 @@ import { closeModal } from "./modules/closeModal";
 import { mainSlider } from "./modules/mainSlider";
 import { sendForm } from "./modules/sendForm";
 import { accordion } from "./modules/accordion";
+import { maskPhone } from "./modules/maskPhone";
 
-
-const swiper = new Swiper('.swiper', {
+const swiper = new Swiper(".swiper", {
   slidesPerView: 3,
   spaceBetween: 30,
   freeMode: true,
   slidesPerGroup: 3,
   loop: true,
   breakpoints: {
-
     0: {
       slidesPerView: 1,
-      spaceBetween: 30
+      spaceBetween: 30,
     },
     576: {
       slidesPerView: 2,
-      spaceBetween: 40
+      spaceBetween: 40,
     },
     1124: {
       slidesPerView: 3,
-      spaceBetween: 30
-    }
+      spaceBetween: 30,
+    },
   },
   navigation: {
     prevEl: ".arrow-left",
@@ -38,4 +37,6 @@ openModal();
 closeModal();
 mainSlider();
 sendForm({ formId: "form" });
-accordion()
+accordion();
+
+maskPhone({ formId: "form" }, '+7 (__) --');

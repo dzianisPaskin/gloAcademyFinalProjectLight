@@ -3,17 +3,36 @@ export const sendForm = ({ formId }) => {
   const statusBlock = document.createElement("div");
   const inputName = form.querySelector(".name");
   const inputTel = form.querySelector(".tel");
+ 
+
 
   const loadText = "Идёт отправка..";
   const errorText = "Ошибка...";
   const succesText = "Отправлено...";
 
-
   inputName.addEventListener("input", (e) => {
-    e.target.value = e.target.value.replace(/[^а-я]/gi, "");
+    const reg = /[^а-я]/gi;
+    e.target.value = e.target.value.replace(reg, "");
+    e.target.classList.add("error");
+    if (!reg.test(e.target.value) && e.target.value.length > 2) {
+      e.target.classList.remove("error");
+    } else if (reg.test(e.target.value)) {
+      e.target.value = e.target.value.replace(reg, "");
+    }
   });
   inputTel.addEventListener("input", (e) => {
-    e.target.value = e.target.value.replace(/[^+0-9]/g, "");
+    const reg = /[^+0-9]/g;
+    e.target.value = e.target.value.replace(reg, "");
+    e.target.classList.add("error");
+    if (
+      !reg.test(e.target.value) &&
+      e.target.value.length > 6 &&
+      e.target.value.length < 11
+    ) {
+      e.target.classList.remove("error");
+    } else if (reg.test(e.target.value)) {
+      e.target.value = e.target.value.replace(reg, "");
+    }
   });
 
   const sendData = (data) => {
@@ -27,7 +46,6 @@ export const sendForm = ({ formId }) => {
   };
 
   const submitForm = () => {
-    const formElements = form.querySelectorAll("input");
     const formData = new FormData(form);
     const formBody = {};
 
@@ -37,17 +55,24 @@ export const sendForm = ({ formId }) => {
     formData.forEach((val, key) => {
       formBody[key] = val;
     });
-
-    sendData(formBody)
-      .then((data) => {
-        statusBlock.textContent = succesText;
-        inputName.value = ''
-        inputTel.value = ''
-      })
-      .catch((error) => {
-        statusBlock.textContent = errorText;
-      });
-
+    if (
+      !inputName.classList.contains("error") &&
+      !inputTel.classList.contains("error")
+    ) {
+      sendData(formBody)
+        .then((data) => {
+          statusBlock.textContent = succesText;
+          inputName.value = "";
+          inputTel.value = "";
+        })
+        .catch((error) => {
+          statusBlock.textContent = errorText;
+        });
+    } else {
+      statusBlock.textContent = "Данные введены неверно";
+      inputName.value = "";
+      inputTel.value = "";
+    }
   };
 
   try {
