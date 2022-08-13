@@ -12,7 +12,6 @@ export const sendForm = ({ formId }) => {
   const errorText = "Ошибка...";
   const succesText = "Отправлено...";
 
-
   const checkInputName = () => {
     const reg = /[^а-я]/gi;
     if (reg.test(inputName.value) || inputName.value.length <= 2) {
@@ -25,7 +24,7 @@ export const sendForm = ({ formId }) => {
       inputName.classList.remove("error");
       statusBlockName.remove();
     }
-  }
+  };
 
   const checkInputTel = () => {
     if (inputTel.value.length === 18) {
@@ -33,24 +32,24 @@ export const sendForm = ({ formId }) => {
 
       statusBlockTel.remove();
     } else {
-      statusBlockTel.textContent = `Введите корректный номер`;
+      statusBlockTel.textContent = `Введите корректный номер +7 (****) ** ** **`;
       formGroup_2.append(statusBlockTel);
       inputTel.classList.add("error");
     }
-  }
+  };
 
   // inputName.addEventListener("change", (e) => {
-    // const reg = /[^а-я]/gi;
-    // if (reg.test(inputName.value) || inputName.value.length <= 2) {
-    //   inputName.classList.add("error");
-    //   statusBlockName.textContent = `Только кириллица и не меньше 2х символов`;
+  //   const reg = /[^а-я]/gi;
+  //   if (reg.test(inputName.value) || inputName.value.length <= 2) {
+  //     inputName.classList.add("error");
+  //     statusBlockName.textContent = `Только кириллица и не меньше 2х символов`;
 
-    //   formGroup_1.append(statusBlockName);
-    //   inputName.value = inputName.value.replace(reg, "");
-    // } else {
-    //   inputName.classList.remove("error");
-    //   statusBlockName.remove();
-    // }
+  //     formGroup_1.append(statusBlockName);
+  //     inputName.value = inputName.value.replace(reg, "");
+  //   } else {
+  //     inputName.classList.remove("error");
+  //     statusBlockName.remove();
+  //   }
   // });
 
   // inputTel.addEventListener("change", (e) => {
@@ -86,15 +85,7 @@ export const sendForm = ({ formId }) => {
       formBody[key] = val;
     });
 
-    if (inputName.value === "" || inputTel.value === "") {
-      [inputName, inputTel].forEach((el) => {
-        if (el.value === "") {
-          el.classList.add("error");
-          statusBlock.textContent = "Заполните все поля";
-          form.append(statusBlock);
-        }
-      });
-    } else if (
+ if (
       !inputName.classList.contains("error") &&
       !inputTel.classList.contains("error")
     ) {
@@ -118,6 +109,17 @@ export const sendForm = ({ formId }) => {
     }
     form.addEventListener("submit", (e) => {
       e.preventDefault();
+        [inputName, inputTel].forEach((el) => {
+          if (el.value === "") {
+            el.classList.add("error");
+            statusBlock.textContent = "Заполните все поля";
+            form.append(statusBlock);
+          } else {
+            el.classList.add("remove");
+            statusBlock.remove()
+          }
+    
+        })
       checkInputName()
       checkInputTel()
       submitForm();
