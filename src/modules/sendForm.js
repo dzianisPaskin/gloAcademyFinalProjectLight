@@ -38,32 +38,6 @@ export const sendForm = ({ formId }) => {
     }
   };
 
-  // inputName.addEventListener("change", (e) => {
-  //   const reg = /[^а-я]/gi;
-  //   if (reg.test(inputName.value) || inputName.value.length <= 2) {
-  //     inputName.classList.add("error");
-  //     statusBlockName.textContent = `Только кириллица и не меньше 2х символов`;
-
-  //     formGroup_1.append(statusBlockName);
-  //     inputName.value = inputName.value.replace(reg, "");
-  //   } else {
-  //     inputName.classList.remove("error");
-  //     statusBlockName.remove();
-  //   }
-  // });
-
-  // inputTel.addEventListener("change", (e) => {
-  //   if (inputTel.value.length === 18) {
-  //     inputTel.classList.remove("error");
-
-  //     statusBlockTel.remove();
-  //   } else {
-  //     statusBlockTel.textContent = `Введите корректный номер`;
-  //     formGroup_2.append(statusBlockTel);
-  //     inputTel.classList.add("error");
-  //   }
-  // });
-
   const sendData = (data) => {
     return fetch("https://jsonplaceholder.typicode.com/posts", {
       method: "POST",
@@ -115,7 +89,7 @@ export const sendForm = ({ formId }) => {
             statusBlock.textContent = "Заполните все поля";
             form.append(statusBlock);
           } else {
-            el.classList.add("remove");
+            el.classList.remove("error");
             statusBlock.remove()
           }
     
