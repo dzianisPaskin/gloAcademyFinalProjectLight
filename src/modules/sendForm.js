@@ -13,7 +13,7 @@ export const sendForm = ({ formId }) => {
   const succesText = "Отправлено...";
 
   const checkInputName = () => {
-    const reg = /[^а-я]/gi;
+    const reg = /[^а-яА-Я]/gi;
     if (reg.test(inputName.value) || inputName.value.length <= 2) {
       inputName.classList.add("error");
       statusBlockName.textContent = `Только кириллица и не меньше 2х символов`;
